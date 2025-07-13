@@ -1,8 +1,8 @@
 FROM debian:bookworm
 
-LABEL Description="Dockerized MiKTeX, Ubuntu 22.04"
+LABEL Description="Dockerized MiKTeX, Debian Bookworm"
 LABEL Vendor="Christian Schenk"
-LABEL Version="23.10.5"
+LABEL Version="latest"
 
 ARG DEBIAN_FRONTEND=noninteractive
 
