@@ -19,6 +19,7 @@ RUN groupadd -g ${gid} ${group} \
 
 RUN    apt-get update \
     && apt-get install -y --no-install-recommends \
+           make \
            apt-transport-https \
            ca-certificates \
            curl \
