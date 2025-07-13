@@ -1,4 +1,4 @@
-FROM ubuntu:jammy
+FROM debian:bookworm
 
 LABEL Description="Dockerized MiKTeX, Ubuntu 22.04"
 LABEL Vendor="Christian Schenk"
@@ -29,7 +29,7 @@ RUN    apt-get update \
            perl
 
 RUN curl -fsSL https://miktex.org/download/key | tee /usr/share/keyrings/miktex-keyring.asc > /dev/null \
-    && echo "deb [signed-by=/usr/share/keyrings/miktex-keyring.asc] https://miktex.org/download/ubuntu jammy universe" | tee /etc/apt/sources.list.d/miktex.list
+    && echo "deb [signed-by=/usr/share/keyrings/miktex-keyring.asc] https://miktex.org/download/debian bookworm universe" | tee /etc/apt/sources.list.d/miktex.list
 
 RUN    apt-get update -y \
     && apt-get install -y --no-install-recommends \
