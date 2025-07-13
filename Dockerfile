@@ -28,8 +28,8 @@ RUN    apt-get update \
            gosu \
            perl
 
-RUN curl -fsSL https://miktex.org/download/key | tee /usr/share/keyrings/miktex-keyring.asc > /dev/null \
-    && echo "deb [signed-by=/usr/share/keyrings/miktex-keyring.asc] https://miktex.org/download/debian bookworm universe" | tee /etc/apt/sources.list.d/miktex.list
+RUN curl -fsSL https://miktex.org/download/key | sudo gpg --dearmor -o /usr/share/keyrings/miktex.gpg \
+ && echo "deb [signed-by=/usr/share/keyrings/miktex.gpg] https://miktex.org/download/debian bookworm universe" | sudo tee /etc/apt/sources.list.d/miktex.list
 
 RUN    apt-get update -y \
     && apt-get install -y --no-install-recommends \
