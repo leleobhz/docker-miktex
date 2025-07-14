@@ -18,8 +18,10 @@ ARG miktex_packages=/miktex/packages
 RUN groupadd -g ${gid} ${group} \
     && useradd -d "${miktex_home}" -u ${uid} -g ${gid} -m -s /bin/bash ${user}
 
-RUN    apt-get update \
+RUN    sed -i -e's/ main/ main contrib/g' /etc/apt/sources.list.d/debian.sources \
+    && apt-get update \
     && apt-get install -y --no-install-recommends \
+           ttf-mscorefonts-installer \
            make \
            apt-transport-https \
            ca-certificates \
