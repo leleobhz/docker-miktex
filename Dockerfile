@@ -13,6 +13,7 @@ ARG gid=1000
 
 ARG miktex_home=/var/lib/miktex
 ARG miktex_work=/miktex/work
+ARG miktex_packages=/miktex/packages
 
 RUN groupadd -g ${gid} ${group} \
     && useradd -d "${miktex_home}" -u ${uid} -g ${gid} -m -s /bin/bash ${user}
@@ -40,6 +41,7 @@ USER ${user}
 
 RUN    miktexsetup finish \
     && initexmf --set-config-value=[MPM]AutoInstall=1 \
+    && initexmf --set-config-value=[MPM]LocalRepository="${miktex_packages}" \
     && miktex packages update \
     && miktex packages install amsfonts
 
